@@ -1,35 +1,131 @@
-# portfolio. hub
+# 🚀 Splunk Lab Automation Suite
 
-The landing page for my self-hosted security and network tools, served at https://timfas.com.
-
-## Tools listed
-
-| Tool | What it does |
-|------|--------------|
-| [cert-check](https://timfas.com/cert-check/) | TLS certificate assessment with expiry, chain of trust, protocol version, key strength and hostname coverage |
-| [inspect](https://timfas.com/inspect/) | Domain email authentication and security header inspection with A to F grading |
-| [acl-gen](https://timfas.com/acl-gen/) | Firewall rule translator across Cisco IOS, pfSense, iptables, AWS NACL and Azure NSG |
-| [passcheck](https://timfas.com/passcheck/) | Client side password strength and breach checker using k-anonymity |
-| [subnet](https://timfas.com/subnet-calculator/) | IPv4 and CIDR calculator with binary breakdown and VLSM splitter |
-| [cv-builder](https://timfas.com/cv-builder/) | Local first CV builder and job assistant |
-
-## Stack
-
-Single file vanilla HTML, CSS and JavaScript. No framework and no build step. Tools are listed in a small array in `index.html`, so adding one is a one line change and a redeploy.
-
-## Deployment
-
-Server first workflow. Changes are made and deployed on the host.
-
-```bash
-ssh <vm-host>
-cd ~/portfolio-hub
-git pull
-./deploy.sh
-```
-
-`deploy.sh` copies the site to `/var/www/portfolio-hub/`, which is the root that Caddy serves for timfas.com.
+Automate Splunk administration end-to-end using Python, REST API, and DevOps tools. This repository simulates a real-world Splunk engineering project with clearly scoped automation tasks, CI/CD, and deployment best practices.
 
 ---
 
-Built by Tim, one small tool at a time.
+## 📌 Project Goals
+
+* Build a modular framework for Splunk administration automation.
+* Simulate a production-like lab with Splunk Enterprise, Forwarders, and app deployment.
+* Each module is scoped so it can be picked up and extended independently.
+
+---
+
+## 📁 Repo Structure
+
+```
+splunk-lab-automation-suite/
+├── api_wrappers/        # REST API tools for users, indexes, alerts
+├── backup_restore/      # Configs, lookups, and KO backups
+├── ci_cd/               # GitHub Actions and validation pipelines
+├── configs/             # Template .conf files (inputs, outputs, props, etc.)
+├── dashboards/          # JSON/XML-based dashboard templates
+├── docs/                # Project wiki, arch diagrams, onboarding guides
+├── install/             # Splunk/UF installers and playbooks
+├── ko_management/       # Saved search, lookup, macro, field update scripts
+├── monitoring/          # Health checks, Slack/email alerts, metrics
+├── tests/               # Unit/integration tests
+├── LICENSE
+├── README.md
+└── CONTRIBUTING.md
+```
+
+---
+
+## 🗂️ Work Areas & Assignees
+
+| Module                           | Description                                         | Module |
+| -------------------------------- | --------------------------------------------------- | ----------------- |
+| `install/`                       | Install Splunk/UF using Python or Ansible           | team  |
+| `api_wrappers/index_mgmt.py`     | Automate index creation, retention policies         | team     |
+| `api_wrappers/user_role_mgmt.py` | Create/update/delete users and roles                | team   |
+| `monitoring/`                    | Health checks (disk, queue, forwarders)             | team    |
+| `ko_management/`                 | Automate saved searches, lookups, field extractions | team       |
+| `dashboards/`                    | Auto-deploy dashboards from templates               | team |
+| `backup_restore/`                | Scheduled backup of configs, apps, KOs              | team |
+| `ci_cd/`                         | Validate + deploy changes via GitHub Actions        | team     |
+
+---
+
+## 🛠 Key Automation Domains
+
+### 1. Deployment & Config
+
+* Install/upgrade Splunk Enterprise/UF
+* Update and push configuration files (conf)
+* Version control all configs
+
+### 2. Index & Storage
+
+* Create/delete indexes via REST API
+* Manage SmartStore settings, retention
+
+### 3. Users & Roles
+
+* CRUD operations on users/roles
+* Role-based access control enforcement
+
+### 4. Knowledge Objects (KOs)
+
+* Automate upload of savedsearches, macros, tags
+* Lookup CSV updates
+
+### 5. Health & Monitoring
+
+* Check disk, license, indexing queues, forwarders
+* Send alerts via email/Slack
+
+### 6. Dashboards & Alerts
+
+* Manage alerts via REST API
+* Template and deploy dashboards
+
+### 7. Backup & Recovery
+
+* Snapshot KOs, apps, configs
+* Disaster restore script
+
+### 8. CI/CD & GitOps
+
+* Validate and lint confs
+* Auto-promote changes to TEST/PROD
+
+---
+
+## 🔧 Setup
+
+```bash
+# Clone
+$ git clone https://github.com/tfasanya79/splunk-lab-automation-suite.git
+$ cd splunk-lab-automation-suite
+
+# Create virtualenv
+$ python3 -m venv venv
+$ source venv/bin/activate
+
+# Install deps
+$ pip install -r requirements.txt
+```
+
+---
+
+## ✅ Getting Started for Team Members
+
+1. Fork the repo
+2. Create a branch: `git checkout -b feature/my-task`
+3. Add the module inside the matching folder
+4. Submit a pull request
+5. CI/CD will validate `.conf` syntax and API contracts
+
+---
+
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for the module contract and Git flow.
+
+---
+
+## 📜 License
+
+MIT License
