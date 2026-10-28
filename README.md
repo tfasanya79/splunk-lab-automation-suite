@@ -8,7 +8,7 @@ Automate Splunk administration end-to-end using Python, REST API, and DevOps too
 
 * Build a modular framework for Splunk administration automation.
 * Simulate a production-like lab with Splunk Enterprise, Forwarders, and app deployment.
-* Assign individual components to team members for agile collaboration.
+* Each module is scoped so it can be picked up and extended independently.
 
 ---
 
@@ -35,16 +35,16 @@ splunk-lab-automation-suite/
 
 ## 🗂️ Work Areas & Assignees
 
-| Module                           | Description                                         | Owner (Sample)    |
+| Module                           | Description                                         | Module |
 | -------------------------------- | --------------------------------------------------- | ----------------- |
-| `install/`                       | Install Splunk/UF using Python or Ansible           | @splunkInstaller  |
-| `api_wrappers/index_mgmt.py`     | Automate index creation, retention policies         | @dataOpsAdmin     |
-| `api_wrappers/user_role_mgmt.py` | Create/update/delete users and roles                | @ldapSpecialist   |
-| `monitoring/`                    | Health checks (disk, queue, forwarders)             | @splunkWatcher    |
-| `ko_management/`                 | Automate saved searches, lookups, field extractions | @koEngineer       |
-| `dashboards/`                    | Auto-deploy dashboards from templates               | @dashboardBuilder |
-| `backup_restore/`                | Scheduled backup of configs, apps, KOs              | @infraBackupAdmin |
-| `ci_cd/`                         | Validate + deploy changes via GitHub Actions        | @cicdEngineer     |
+| `install/`                       | Install Splunk/UF using Python or Ansible           | team  |
+| `api_wrappers/index_mgmt.py`     | Automate index creation, retention policies         | team     |
+| `api_wrappers/user_role_mgmt.py` | Create/update/delete users and roles                | team   |
+| `monitoring/`                    | Health checks (disk, queue, forwarders)             | team    |
+| `ko_management/`                 | Automate saved searches, lookups, field extractions | team       |
+| `dashboards/`                    | Auto-deploy dashboards from templates               | team |
+| `backup_restore/`                | Scheduled backup of configs, apps, KOs              | team |
+| `ci_cd/`                         | Validate + deploy changes via GitHub Actions        | team     |
 
 ---
 
@@ -97,7 +97,7 @@ splunk-lab-automation-suite/
 
 ```bash
 # Clone
-$ git clone https://github.com/your-org/splunk-lab-automation-suite.git
+$ git clone https://github.com/tfasanya79/splunk-lab-automation-suite.git
 $ cd splunk-lab-automation-suite
 
 # Create virtualenv
@@ -114,18 +114,18 @@ $ pip install -r requirements.txt
 
 1. Fork the repo
 2. Create a branch: `git checkout -b feature/my-task`
-3. Add your module inside the right folder
+3. Add the module inside the matching folder
 4. Submit a pull request
 5. CI/CD will validate `.conf` syntax and API contracts
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for team process, style guide, and Git flow
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for the module contract and Git flow.
 
 ---
 
 ## 📜 License
 
-MIT License © 2025 Splunk Admin Lab Team
+MIT License
